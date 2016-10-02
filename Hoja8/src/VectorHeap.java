@@ -71,7 +71,7 @@ public class VectorHeap<E extends Comparable<E>> implements interfacePriorityQue
 	}
         
         public void clear(){
-            cola.clear();
+            //cola.clear();
             data.clear();
         }
 
