@@ -1,0 +1,3 @@
+Para compilar en scala sin usar algún IDE se debe escribir lo siguiente:
+
+scalac Main.scala Paciente.scala VectorHeap.scala interfacePriorityQueue.scala
