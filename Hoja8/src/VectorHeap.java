@@ -2,20 +2,34 @@
 import java.util.Vector;
 import java.util.PriorityQueue;
 
+/**
+ *
+ * @author arriaza96
+ * @param <E> el tipo de dato
+ */
 public class VectorHeap<E extends Comparable<E>> implements interfacePriorityQueue<E>
 {
 
-	protected Vector<E> data; // the data, kept in heap order
-        protected PriorityQueue<E> cola;
+    /**
+     *
+     */
+    protected Vector<E> data; // the data, kept in heap order
+       // protected PriorityQueue<E> cola;
         
-	public VectorHeap()
+    /**
+     *
+     */
+    public VectorHeap()
 	// post: constructs a new priority queue
 	{
 		data = new Vector<E>();
 	}
         
-
-	public VectorHeap(Vector<E> v)
+    /**
+     *
+     * @param v
+     */
+    public VectorHeap(Vector<E> v)
 	// post: constructs a new priority queue from an unordered vector
 	{
 		int i;
@@ -25,28 +39,48 @@ public class VectorHeap<E extends Comparable<E>> implements interfacePriorityQue
 			add(v.get(i));
 		}
 	}
-	protected static int parent(int i)
+
+    /**
+     *
+     * @param i el numero del nodo
+     * @return el padre del nodo
+     */
+    protected static int parent(int i)
 	// pre: 0 <= i < size
 	// post: returns parent of node at location i
 	{
 		return (i-1)/2;
 	}
 
-	protected static int left(int i)
+    /**
+     *
+     * @param i el numero de nodo
+     * @return el nodo a la izquierda
+     */
+    protected static int left(int i)
 	// pre: 0 <= i < size
 	// post: returns index of left child of node at location i
 	{
 		return 2*i+1;
 	}
 
-	protected static int right(int i)
+    /**
+     *
+     * @param i
+     * @return
+     */
+    protected static int right(int i)
 	// pre: 0 <= i < size
 	// post: returns index of right child of node at location i
 	{
 		return (2*i+1) + 1;
 	}
 
-	protected void percolateUp(int leaf)
+    /**
+     *
+     * @param leaf la hoja que se quiere "percolar"
+     */
+    protected void percolateUp(int leaf)
 	// pre: 0 <= leaf < size
 	// post: moves node at index leaf up to appropriate position
 	{
@@ -62,7 +96,11 @@ public class VectorHeap<E extends Comparable<E>> implements interfacePriorityQue
 		data.set(leaf,value);
 	}
 
-	public void add(E value)
+    /**
+     *
+     * @param value a ser anadido al vectorheap
+     */
+    public void add(E value)
 	// pre: value is non-null comparable
 	// post: value is added to priority queue
 	{
@@ -70,12 +108,19 @@ public class VectorHeap<E extends Comparable<E>> implements interfacePriorityQue
 		percolateUp(data.size()-1);
 	}
         
-        public void clear(){
+    /**
+     *
+     */
+    public void clear(){
             //cola.clear();
             data.clear();
         }
 
-	protected void pushDownRoot(int root)
+    /**
+     *
+     * @param root la cual debe ser empujada hacia abajo
+     */
+    protected void pushDownRoot(int root)
 	// pre: 0 <= root < size
 	// post: moves node at index root down
 	// to appropriate position in subtree
@@ -109,7 +154,11 @@ public class VectorHeap<E extends Comparable<E>> implements interfacePriorityQue
 		}
 	}
 
-	public E remove()
+    /**
+     *
+     * @return E el elemento de mayor prioridad, lo devuelve y elimina del vectorheap
+     */
+    public E remove()
 	// pre: !isEmpty()
 	// post: returns and removes minimum value from queue
 	{
@@ -120,24 +169,33 @@ public class VectorHeap<E extends Comparable<E>> implements interfacePriorityQue
 		return minVal;
 	}
 
+    /**
+     *
+     * @return muestra el elemento de mayor prioridad sin quitarlo de la lista
+     */
     @Override
     public E getFirst() {
         return data.firstElement();
         //return cola.poll();
     }
 
+    /**
+     *
+     * @return true si esta vacio, false si tiene al menos un elemento
+     */
     @Override
     public boolean isEmpty() {
         return data.isEmpty();
     }
 
+    /**
+     *
+     * @return el tamano del vectorheap
+     */
     @Override
     public int size() {
         return data.size();
     }
-    /*
-    public void insert(E obj){
-        cola.add(obj);
-    }*/
+    
 }
 

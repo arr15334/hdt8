@@ -5,11 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
@@ -17,11 +12,12 @@ import java.util.PriorityQueue;
  */
 public class Main {
     static VectorHeap<Paciente> elHeap = new VectorHeap();
-    static ArrayList<String> lospacientes = new ArrayList();
+    //static ArrayList<String> lospacientes = new ArrayList();
     static PriorityQueue<Paciente> lacola = new PriorityQueue();
     
     
     //utilizando la implementacion de VectorHeap ************************************
+    //lee el archivo de pacientes.txt y los mete en la cola usando la implementacion con vectorheap
     public static void llenarFicha(){
         BufferedReader br = null;
         try {
@@ -45,7 +41,7 @@ public class Main {
             }
         }
     }
-    
+    //muestra en orden de prioridad los pacientes del vector heap
     public static void mostrarFicha(){
         int j = elHeap.size();
         for (int i=0; i<j;i++){
@@ -53,6 +49,7 @@ public class Main {
         }
     }
     //utilizando el JFC de PriorityQueue<E> ****************************************
+    //lee un archivo de texto e ingresa los pacientes a la cola
     public static void llenarCola(){
         BufferedReader br = null;
         try {
@@ -75,10 +72,11 @@ public class Main {
             }
         }
     }
+    //muestra en orden de prioridad los elementos de la cola
     public static void mostrarCola(){
         int j = lacola.size(); //guardo el tamano inicial de la cola 
         for(int i = 0; i<j; i++){
-            System.out.println(lacola.poll().toString());
+            System.out.println(lacola.poll().toString()); 
         }
     }
     public static void main (String[] args){
@@ -89,5 +87,6 @@ public class Main {
         System.out.println("Usando PriorityQueue (JCF): ");
         llenarCola();
         mostrarCola();
+               
     }           
 }
